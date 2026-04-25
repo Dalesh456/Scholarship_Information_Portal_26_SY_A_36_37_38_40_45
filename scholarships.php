@@ -25,9 +25,7 @@ if (!empty($filter_year)) {
 }
 
 if (!empty($filter_gender)) {
-    if ($filter_gender != 'All') {
-        $sql .= " AND (gender = '$filter_gender' OR gender = 'All')";
-    }
+    $sql .= " AND (gender = '$filter_gender' OR gender = 'All')";
 }
 
 if (!empty($filter_minority)) {
@@ -44,23 +42,11 @@ $result = mysqli_query($conn, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scholarships - Scholarship Portal</title>
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=99">
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <div class="header-container">
-            <h1>Scholarship Information Portal</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="scholarships.php">Scholarships</a></li>
-                    <li><a href="notices.php">Notices</a></li>
-                    <li><a href="admin/login.php">Admin Login</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<?php include 'header.php'; ?>
 
     <!-- Main Content -->
     <div class="container">
@@ -101,10 +87,9 @@ $result = mysqli_query($conn, $sql);
                     <div>
                         <label>Gender:</label>
                         <select name="gender">
-                            <option value="">All</option>
-                            <option value="Male" <?php if($filter_gender == 'Male') echo 'selected'; ?>>Male</option>
-                            <option value="Female" <?php if($filter_gender == 'Female') echo 'selected'; ?>>Female</option>
-                            <option value="All" <?php if($filter_gender == 'All') echo 'selected'; ?>>All</option>
+                        <option value="">All</option>
+                        <option value="Male" <?php if($filter_gender == 'Male') echo 'selected'; ?>>Male</option>
+                        <option value="Female" <?php if($filter_gender == 'Female') echo 'selected'; ?>>Female</option>
                         </select>
                     </div>
 
@@ -131,10 +116,15 @@ $result = mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo '<div class="scholarship-card">';
                     echo '<h3>' . $row['name'] . '</h3>';
+                    echo '<div class="badges">';
                     echo '<span class="category">' . $row['category'] . '</span>';
-                    echo '<p><strong>Eligibility:</strong> ' . substr($row['eligibility'], 0, 100) . '...</p>';
-                    echo '<p class="last-date"><strong>Last Date:</strong> ' . date('d-m-Y', strtotime($row['last_date'])) . '</p>';
-                    echo '<a href="scholarship_details.php?id=' . $row['id'] . '">View Details</a>';
+                    echo '<span class="gender-badge">' . $row['gender'] . '</span>';
+                    echo '</div>';
+                    echo '<p><strong>Year:</strong> ' . $row['studying_year'] . '</p>';
+                    echo '<p><strong>Minority:</strong> ' . $row['minority'] . '</p>';
+                    echo '<p class="last-date">Last Date: ' . $row['last_date'] . '</p>';
+                    $query = http_build_query($_GET);
+                    echo '<a href="scholarship_details.php?id=' . $row['id'] . '&' . $query . '">View Details</a>';
                     echo '</div>';
                 }
             } else {
@@ -145,9 +135,7 @@ $result = mysqli_query($conn, $sql);
     </div>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Scholarship Portal. All Rights Reserved.</p>
-    </footer>
+<?php include 'footer.php'; ?>
 
     <script>
         // Live search functionality

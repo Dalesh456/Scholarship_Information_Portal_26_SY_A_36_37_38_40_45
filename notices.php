@@ -17,19 +17,7 @@ $result = mysqli_query($conn, $sql);
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <div class="header-container">
-            <h1>Scholarship Information Portal</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="scholarships.php">Scholarships</a></li>
-                    <li><a href="notices.php">Notices</a></li>
-                    <li><a href="admin/login.php">Admin Login</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<?php include 'header.php'; ?>
 
     <!-- Main Content -->
     <div class="container">
@@ -53,9 +41,7 @@ $result = mysqli_query($conn, $sql);
     </div>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Scholarship Portal. All Rights Reserved.</p>
-    </footer>
+<?php include 'footer.php'; ?>
 
     <script>
         // Notification system for new notices

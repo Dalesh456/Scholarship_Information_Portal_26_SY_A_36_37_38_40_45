@@ -42,17 +42,7 @@ $result = mysqli_query($conn, $sql);
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <div class="header-container">
-            <h1>Scholarship Portal - Admin Panel</h1>
-            <nav>
-                <ul>
-                    <li><a href="dashboard.php">Dashboard</a></li>
-                    <li><a href="logout.php">Logout</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <?php include 'admin_header.php'; ?>
 
     <!-- Main Content -->
     <div class="container">
@@ -96,9 +86,7 @@ $result = mysqli_query($conn, $sql);
     </div>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Scholarship Portal. All Rights Reserved.</p>
-    </footer>
+   <?php include '../footer.php'; ?>
 
     <div id="loading-spinner" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:9999;">
         <div style="border:4px solid #f3f3f3; border-top:4px solid #3498db; border-radius:50%; width:40px; height:40px; animation:spin 1s linear infinite;"></div>

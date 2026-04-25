@@ -142,7 +142,7 @@ nav ul li a:hover {
     width: 100%;
 }
 
-.filters-grid>div {
+.filters-grid div {
     flex: 1;
     min-width: 140px;
 }
@@ -217,14 +217,32 @@ nav ul li a:hover {
     font-size: 14px;
 }
 
-.scholarship-card .category {
+.scholarship-card.badges {
+    display: flex;
+    justify-content:right;             
+    align-items: center;
+    margin: 8px 0;
+}
+
+.category {
     display: inline-block;
-    padding: 3px 8px;
-    background-color: #3498db;
+    padding: 4px 10px;
+    background-color:#3498db;    
     color: white;
-    border-radius: 3px;
+    border-radius: 20px;
     font-size: 12px;
-    margin: 5px 0;
+    font-weight: 500;
+}
+
+.gender-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    margin-left: 10px;
+    background-color: green;  
+    color: white;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
 }
 
 .scholarship-card .last-date {
